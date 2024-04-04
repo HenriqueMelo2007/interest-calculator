@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 void simpleInterest(void);
 void compoundInterest(void);
@@ -18,7 +19,7 @@ int main(void)
   } while (operation != 1 && operation != 2);
 
   printf("The interest rate and time must refer to the same unit of time. \n");
-  printf("Use a period ( '.' ) to separate decimal places.");
+  printf("Use a period ( '.' ) to separate decimal places. \n");
 
   (operation == 1) ? simpleInterest() : compoundInterest();
 
@@ -46,4 +47,26 @@ void simpleInterest(void)
   printf("final amount: %f", result);
 }
 
-void compoundInterest(void) {}
+void compoundInterest(void)
+{
+  double result;
+
+  float initialValue;
+  float interestRate;
+  float time;
+
+  printf("Type the initial value: ");
+  scanf("%f", &initialValue);
+
+  printf("Type the interest rate ( write in decimal ): ");
+  scanf("%f", &interestRate);
+
+  printf("Type the time: ");
+  scanf("%f", &time);
+
+  float parentheses = 1 + interestRate;
+  double exponentiation = pow(parentheses, time);
+
+  result = initialValue * exponentiation;
+  printf("final amount: %f", result);
+}
