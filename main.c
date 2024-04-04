@@ -4,6 +4,7 @@
 
 void simpleInterest(void);
 void compoundInterest(void);
+void getValues(float *initialValue, float *interestRate, float *time);
 
 int main(void)
 {
@@ -34,14 +35,7 @@ void simpleInterest(void)
   float interestRate;
   float time;
 
-  printf("Type the initial value: ");
-  scanf("%f", &initialValue);
-
-  printf("Type the interest rate ( write in decimal ): ");
-  scanf("%f", &interestRate);
-
-  printf("Type the time: ");
-  scanf("%f", &time);
+  getValues(&initialValue, &interestRate, &time);
 
   result = initialValue + (initialValue * interestRate * time);
   printf("final amount: %f", result);
@@ -55,18 +49,23 @@ void compoundInterest(void)
   float interestRate;
   float time;
 
-  printf("Type the initial value: ");
-  scanf("%f", &initialValue);
-
-  printf("Type the interest rate ( write in decimal ): ");
-  scanf("%f", &interestRate);
-
-  printf("Type the time: ");
-  scanf("%f", &time);
+  getValues(&initialValue, &interestRate, &time);
 
   float parentheses = 1 + interestRate;
   double exponentiation = pow(parentheses, time);
 
   result = initialValue * exponentiation;
   printf("final amount: %f", result);
+}
+
+void getValues(float *initialValue, float *interestRate, float *time)
+{
+  printf("Type the initial value: ");
+  scanf("%f", initialValue);
+
+  printf("Type the interest rate ( write in decimal ): ");
+  scanf("%f", interestRate);
+
+  printf("Type the time: ");
+  scanf("%f", time);
 }
